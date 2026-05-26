@@ -1,0 +1,50 @@
+# venv и кэш Python
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Локальные данные (тяжёлые)
+data/preview/*.png
+data/preview/*.html
+data/processed/*.tif
+data/processed/*.tiff
+data/processed/ndvi_series/
+data/processed/*.csv
+data/processed/*.json
+data/raw/
+data/weather/*.csv
+data/catalog/series_*.json
+data/fields/raw_osm_response.json
+
+# Логи временных запусков
+data/processed/train_log.txt
+data/processed/plot_log.txt
+data/processed/anomaly_log.txt
+data/processed/plot_anomaly_log.txt
+
+# Разрешённые маленькие артефакты (для воспроизводимости портфолио)
+!data/fields/fields_v1.geojson
+!data/catalog/S2A_37TDK_20240603_0_L2A.json
+
+# Бинарные модели и веса
+models/*.pkl
+models/*.lgb
+!models/.gitkeep
+
+# Растровые данные (могут быть гигабайты)
+*.tif
+*.tiff
+*.geotiff
+
+# OS / IDE
+.DS_Store
+.idea/
+.vscode/
+.env
+
+# Локальная папка Claude Code
+.claude/
+
+# Runs / артефакты экспериментов
+runs/

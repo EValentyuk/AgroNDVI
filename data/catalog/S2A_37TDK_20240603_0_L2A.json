@@ -1,0 +1,20 @@
+{
+  "id": "S2A_37TDK_20240603_0_L2A",
+  "datetime": "2024-06-03 08:27:45.257000+00:00",
+  "cloud_cover": 0.09,
+  "mgrs_tile": "37TDK",
+  "platform": "sentinel-2a",
+  "bbox": [
+    37.72746325920278,
+    44.24943654580967,
+    39.12415365570513,
+    45.15376076769412
+  ],
+  "assets": {
+    "red_B04": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/37/T/DK/2024/6/S2A_37TDK_20240603_0_L2A/B04.tif",
+    "nir_B08": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/37/T/DK/2024/6/S2A_37TDK_20240603_0_L2A/B08.tif",
+    "visual": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/37/T/DK/2024/6/S2A_37TDK_20240603_0_L2A/TCI.tif",
+    "scl": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/37/T/DK/2024/6/S2A_37TDK_20240603_0_L2A/SCL.tif",
+    "thumbnail": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/37/T/DK/2024/6/S2A_37TDK_20240603_0_L2A/thumbnail.jpg"
+  }
+}

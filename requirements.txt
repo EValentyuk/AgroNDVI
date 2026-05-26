@@ -1,0 +1,17 @@
+numpy
+pandas
+rasterio
+geopandas
+shapely
+pyproj
+folium
+lightgbm
+scikit-learn
+streamlit
+plotly
+matplotlib
+requests
+boto3
+pystac-client
+osm2geojson
+streamlit-folium
