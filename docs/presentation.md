@@ -4,7 +4,7 @@ theme: default
 paginate: true
 size: 16:9
 header: 'AgroNDVI · 10-дневный пет-проект'
-footer: 'Валентюк Е.Г. · qwert000cod@proton.me · github.com/EValentyuk'
+footer: 'Валентюк Е.Г. · e.valentyuk@yandex.ru · github.com/EValentyuk'
 style: |
   section { font-family: 'Segoe UI', Arial, sans-serif; }
   h1 { color: #1e7a1e; }
@@ -318,7 +318,7 @@ End-to-end pipeline за 10 минут. Воспроизводимо одной 
 - 🧪 **Эксперимент LightGBM:** [docs/experiments/2026-05-26-lgb-baseline.md](experiments/2026-05-26-lgb-baseline.md)
 - 🔍 **Эксперимент аномалий:** [docs/experiments/2026-05-26-anomaly.md](experiments/2026-05-26-anomaly.md)
 
-- ✉️ **Email:** qwert000cod@proton.me
+- ✉️ **Email:** e.valentyuk@yandex.ru
 - 🐱 **GitHub:** github.com/EValentyuk
 
 **Открыт к собеседованиям в ML/DS-команды банковского агро-сегмента, агрохолдингов, страховых, геотех-стартапов.**
@@ -337,4 +337,4 @@ End-to-end pipeline за 10 минут. Воспроизводимо одной 
 
 **Вопросы?**
 
-`qwert000cod@proton.me` · `github.com/EValentyuk`
+`e.valentyuk@yandex.ru` · `github.com/EValentyuk`

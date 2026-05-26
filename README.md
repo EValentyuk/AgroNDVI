@@ -197,6 +197,6 @@ python -m venv .venv
 
 ## Лицензия и контакты
 
-- Автор: Валентюк Евгений Григорьевич, qwert000cod@proton.me;
+- Автор: Валентюк Евгений Григорьевич, e.valentyuk@yandex.ru;
 - GitHub: https://github.com/EValentyuk;
 - Код -- MIT, документация -- CC-BY 4.0.

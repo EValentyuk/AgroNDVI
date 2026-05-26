@@ -130,4 +130,4 @@
 ## Контакты
 
 - GitHub: https://github.com/EValentyuk
-- Email: qwert000cod@proton.me
+- Email: e.valentyuk@yandex.ru

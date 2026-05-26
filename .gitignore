@@ -48,3 +48,8 @@ models/*.lgb
 
 # Runs / артефакты экспериментов
 runs/
+
+# Microsoft Office lock-файлы
+~$*.pptx
+~$*.docx
+~$*.xlsx
