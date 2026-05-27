@@ -1,5 +1,14 @@
 # AgroNDVI
 
+[![Python](https://img.shields.io/badge/Python-3.13-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![LightGBM](https://img.shields.io/badge/LightGBM-4.6-7BB661)](https://lightgbm.readthedocs.io/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.57-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io/)
+[![rasterio](https://img.shields.io/badge/rasterio-1.5-1e7a1e)](https://rasterio.readthedocs.io/)
+[![GitHub Pages](https://img.shields.io/badge/docs-GitHub%20Pages-222?logo=github)](https://evalentyuk.github.io/AgroNDVI/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Last commit](https://img.shields.io/github/last-commit/EValentyuk/AgroNDVI)](https://github.com/EValentyuk/AgroNDVI/commits/main)
+[![Repo size](https://img.shields.io/github/repo-size/EValentyuk/AgroNDVI)](https://github.com/EValentyuk/AgroNDVI)
+
 Пет-проект по спутниковому мониторингу полей и прогнозу урожайности.
 
 Принимает координаты полей в Краснодарском крае, скачивает Sentinel-2 за сезон, считает NDVI, объединяет с погодой и историческими данными урожайности, выдаёт прогноз ц/га и подсвечивает аномальные поля. Streamlit-приложение с интерактивной картой.
