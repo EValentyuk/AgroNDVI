@@ -1,0 +1,33 @@
+<!-- Mermaid.js для рендеринга C4-диаграмм в architecture.md -->
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+
+  // Сначала превращаем все <pre><code class="language-mermaid">...</code></pre>
+  // (так Jekyll/kramdown выводит fenced-блоки ```mermaid```) обратно в <pre class="mermaid">,
+  // чтобы Mermaid сам нашёл их и отрендерил.
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('pre > code.language-mermaid').forEach((codeEl) => {
+      const pre = codeEl.parentElement;
+      const wrapper = document.createElement('pre');
+      wrapper.className = 'mermaid';
+      wrapper.textContent = codeEl.textContent;
+      pre.replaceWith(wrapper);
+    });
+
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'default',
+      securityLevel: 'loose',
+      flowchart: { useMaxWidth: true, htmlLabels: true },
+      sequence: { useMaxWidth: true },
+    });
+    mermaid.run();
+  });
+</script>
+<style>
+  pre.mermaid {
+    background: transparent !important;
+    text-align: center;
+    overflow-x: auto;
+  }
+</style>

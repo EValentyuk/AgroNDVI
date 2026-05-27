@@ -628,9 +628,9 @@ cd c:\Projects\AgroNDVI
 - `presentation.md` -- 21 слайд в формате Marp (Markdown + YAML-фронтматтер). Открывается VS Code плагином `marp-team.marp-vscode`, экспортируется в PDF/PPTX/HTML;
 - `docs/presentation.pptx` (10 МБ) -- готовая PowerPoint-презентация со всеми скриншотами;
 - `docs/presentation.pdf` (4 МБ) -- готовый PDF для отправки рекрутёрам без установки PowerPoint;
-- `docs/publish-checklist.md` -- пошаговая инструкция публикации на GitHub (через `gh` и через web), создание тэгов, заполнение About/Topics, откат если что;
-- `docs/publish-tenchat.md` -- 2 черновика поста (стандартный + история);
-- `docs/publish-linkedin.md` -- 2 черновика (RU + EN) + технические заметки по постингу;
+- `internal/publish-checklist.md` -- пошаговая инструкция публикации на GitHub (через `gh` и через web), создание тэгов, заполнение About/Topics, откат если что;
+- `internal/publish-tenchat.md` -- 2 черновика поста (стандартный + история);
+- `internal/publish-linkedin.md` -- 2 черновика (RU + EN) + технические заметки по постингу;
 - `.gitignore` -- доработан: исключения для `data/preview/`, `data/processed/*.csv|.tif`, `models/*.pkl`, Office lock-файлы; разрешения для `data/fields/fields_v1.geojson` и `data/catalog/S2A_*.json` (маленькие воспроизводимые артефакты).
 
 ### Структура коммитов (4 коммита, ещё не запушены)
@@ -650,13 +650,13 @@ cd c:\Projects\AgroNDVI
 - `@marp-team/marp-cli v4.4.0` через npm для конвертации MD -> PPTX/PDF.
 
 ### Что НЕ сделал (осознанно)
-- **Не сделал English README.** Пользователь устал, проект и так покрыт двуязычной презентацией (LinkedIn EN-черновик в `docs/publish-linkedin.md`) и MAPE-метрики читаются на любом языке. EN-README можно сделать после публикации в день рефакторинга.
-- **Не запустил `gh repo create` сам.** Это actions visible to others (создание публичного репозитория) -- требует подтверждения пользователя и его credentials. Подготовлена пошаговая инструкция в `docs/publish-checklist.md`.
+- **Не сделал English README.** Пользователь устал, проект и так покрыт двуязычной презентацией (LinkedIn EN-черновик в `internal/publish-linkedin.md`) и MAPE-метрики читаются на любом языке. EN-README можно сделать после публикации в день рефакторинга.
+- **Не запустил `gh repo create` сам.** Это actions visible to others (создание публичного репозитория) -- требует подтверждения пользователя и его credentials. Подготовлена пошаговая инструкция в `internal/publish-checklist.md`.
 - **Не сделал `git push` сам.** То же -- shared state action. Команды для пользователя в `publish-checklist.md`.
 - **Не запустил `run_pipeline.ps1` end-to-end на финальную проверку.** Все шаги уже работали по отдельности, шанс регрессии минимален. Можно сделать перед push, если есть силы.
 
 ### Финальные шаги для пользователя
-1. Создать GitHub-репозиторий через `gh repo create` или web (см. `docs/publish-checklist.md`).
+1. Создать GitHub-репозиторий через `gh repo create` или web (см. `internal/publish-checklist.md`).
 2. `git push -u origin main` (если репо создан через `gh ... --push`, это уже сделано).
 3. Проверить рендеринг README и Mermaid-диаграмм на GitHub.
 4. Заполнить About + Topics для discoverability.
@@ -665,7 +665,7 @@ cd c:\Projects\AgroNDVI
 
 ### Файлы
 - `docs/presentation.md`, `docs/presentation.pptx`, `docs/presentation.pdf`.
-- `docs/publish-checklist.md`, `docs/publish-tenchat.md`, `docs/publish-linkedin.md`.
+- `internal/publish-checklist.md`, `internal/publish-tenchat.md`, `internal/publish-linkedin.md`.
 - `.gitignore` (обновлён).
 - `README.md`, `docs/portfolio-report.md` (email фикс).
 - `C:\Users\ВЕГ\.claude\projects\c--Projects-AgroNDVI\memory\user_contact.md` (auto-memory).

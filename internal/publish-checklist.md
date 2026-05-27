@@ -78,8 +78,8 @@ gh release create v0.1.0 `
 ## 6. Социальные сети
 
 См. готовые черновики:
-- TenChat -- `docs/publish-tenchat.md`;
-- LinkedIn (RU + EN) -- `docs/publish-linkedin.md`.
+- TenChat -- `publish-tenchat.md`;
+- LinkedIn (RU + EN) -- `publish-linkedin.md`.
 
 Запостить **через 1-2 дня** после публикации репо, чтобы пройтись по проекту с холодной головой и поправить найденные баги.
 

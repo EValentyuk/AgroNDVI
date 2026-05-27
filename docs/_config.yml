@@ -1,0 +1,29 @@
+theme: jekyll-theme-cayman
+
+title: AgroNDVI
+description: Спутниковый мониторинг рисовых полей и прогноз урожайности · Sentinel-2 + LightGBM + Streamlit
+show_downloads: false
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: highlight
+
+# Файлы и папки, которые НЕ попадают на сайт.
+# presentation.md -- исходник Marp, для просмотра используем presentation.pdf / .pptx.
+exclude:
+  - presentation.md
+  - "*.pyc"
+  - "*.tif"
+  - "*.tiff"
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+
+# Ссылки внизу страниц
+footer_text: >
+  AgroNDVI · Валентюк Е.Г. ·
+  <a href="https://github.com/EValentyuk/AgroNDVI">GitHub</a> ·
+  <a href="mailto:e.valentyuk@yandex.ru">e.valentyuk@yandex.ru</a>
