@@ -674,3 +674,93 @@ cd c:\Projects\AgroNDVI
 Проект завершён. От пустой папки 2026-05-25 17:05 до публикационно-готового пакета с UI, документацией, презентацией, ML-моделью и anomaly-детектором за **точно 28 часов 31 минуту** реальной работы (по таймштампам в этом логе). Объём репо: 6 МБ + 10 МБ PPTX + 4 МБ PDF.
 
 Цель -- демонстрация навыков ML/DS для перехода в банковский агро-сегмент. Главный методологический сигнал -- честное включение результата «baseline побеждает LightGBM» в портфолио как доказательство зрелого подхода к bias-variance trade-off.
+
+## 2026-05-27 09:47
+
+### Post-launch: GitHub Pages, Streamlit Cloud, wow-finishing
+
+После закрытия Дня 10 проект пушнут на GitHub и пройден ещё один итеративный цикл доработок. 11 коммитов за ~12 часов. Хронология:
+
+### Этап 1: GitHub Pages с темой Cayman
+- `docs/_config.yml` -- jekyll-theme-cayman + kramdown GFM, exclude `presentation.md` (Marp-исходник, не для рендеринга);
+- `docs/index.md` -- landing-страница с hero-блоком методологического сигнала, навигацией по 6 документам, 4 ключевыми изображениями, ключевыми цифрами, контактами;
+- `docs/_includes/head_custom.html` -- первая попытка инжектировать Mermaid через хук темы. **Не сработало:** cayman theme НЕ подключает `head_custom.html` (Jekyll-конвенция темы pages-themes/cayman этого хука не имеет);
+- Решение Mermaid: `<script src="cdn.jsdelivr.net/npm/mermaid@10.9.0">` + JS-преобразование `<pre><code class="language-mermaid">` в `<pre class="mermaid">` -- добавлено **прямо в конец `architecture.md`**, raw HTML пропускается kramdown;
+- Внутренние черновики `publish-*.md` вынесены из `docs/` в `internal/` (не публикуются на сайте, остаются в git);
+- Ссылки в логах обновлены под новые пути.
+
+### Этап 2: навигация и custom layout
+- `docs/_layouts/default.html` -- кастомный layout, перекрывает темовский. Добавлено:
+  - кнопка «🏠 На главную» в шапке (скрыта на index);
+  - кнопка «📦 GitHub» в шапке;
+  - плавающая зелёная кнопка «↑» в правом нижнем углу (появляется при scroll >300px, плавный scroll-to-top по клику);
+- `docs/architecture.md`: ссылка `[requirements.txt](../requirements.txt)` -> абсолютная `github.com/.../blob/main/requirements.txt` (на GitHub Pages корня репо нет).
+
+### Этап 3: Streamlit Community Cloud deploy
+- 5 артефактов добавлены в git через `git add -f` (общим размером ~340 КБ): `fields_features.csv`, `fields_ndvi_series.csv`, `fields_anomaly.csv`, `weather_daily.csv`, `lgb_yield.pkl`. Без них Streamlit Cloud упадёт с FileNotFoundError при cold start;
+- `runtime.txt` в корне -- `python-3.13` для указания версии Python на Streamlit Cloud;
+- Деплой через https://share.streamlit.io/ -- репо `EValentyuk/AgroNDVI`, main file `src/streamlit_app.py`. URL: **https://agrondvi.streamlit.app/**, 24/7;
+- GitHub Repository About + Topics заполнены через web (description, homepage Pages URL, 16 topics для discoverability).
+
+### Этап 4: pro-портфолио (folium + badges + backlog)
+- `docs/map.html` -- интерактивная folium-карта 20 полей со спутниковой подложкой Esri, popup, переключателем слоёв. Скопирована из `data/preview/`;
+- Hero-блок в `docs/index.md` со ссылкой на карту перед основной навигацией;
+- README -- 8 shields.io badges (Python 3.13, LightGBM 4.6, Streamlit 1.57, rasterio 1.5, Pages, License MIT, Last commit, Repo size);
+- `internal/wow-backlog.md` -- полный список улучшений (выполненные, отложенные, дополнительные идеи) -- чтобы не потерять;
+- `internal/deploy-next-steps.md` -- пошаговая инструкция Streamlit Cloud + Repository Topics для пользователя.
+
+### Этап 5: live demo интеграция
+- README -- два badge в hero-секции: «Open in Streamlit» (официальный) + «Docs site»;
+- README -- блок ссылок Live demo / Документация под badges;
+- `docs/index.md` -- hero-блок «🚀 Live demo» перед статичной картой.
+
+### Этап 6: wow-finishing (4 артефакта)
+- **Анимация GIF NDVI за сезон.** `src/plot_animated_fields.py` через matplotlib + PillowWriter (без новых зависимостей). 44 кадра за полный сезон 2023-2024, 11 секунд при fps=4, размер 808 КБ. Встроен в hero README и docs/index.md. Видна классическая рисовая кривая: затопление → всходы → пик в августе → жатва;
+- **CITATION.cff** в корне репо -- стандартный YAML с title, abstract, authors (Valentyuk, e.valentyuk@yandex.ru), repository, version 0.1.0, license MIT, keywords. Активирует кнопку «Cite this repository» в правом сайдбаре GitHub;
+- **GitHub Actions smoke-test.** `.github/workflows/smoke-test.yml`: на push в main или PR прогоняет на Ubuntu установку GDAL через apt + pip install requirements + `python src/smoke_test.py`. Badge в README. Первая попытка push отклонена -- OAuth-токен gh без scope `workflow`. После `gh auth refresh -s workflow` -- workflow добавлен отдельным коммитом. Первый прогон прошёл успешно, badge зелёный;
+- **JuxtaposeJS slider SCL vs NDVI.** `docs/comparison.md` со встроенным CDN JuxtaposeJS. Первая попытка: разделитель не появился -- картинки были разного размера (965×857 vs 1026×804), JuxtaposeJS требует точного равенства. Фикс: ресайз через PIL до 1000×800 (новые файлы `ndvi_slider.png`, `scl_slider.png`) + явный вызов `juxtapose.scanPage()` после `window.load`. Заработало.
+
+### Технические заметки этой сессии
+- **OAuth scope ограничения gh:** добавление файлов в `.github/workflows/` требует scope `workflow`. `gh auth login` по умолчанию его не даёт. Команда: `gh auth refresh -s workflow`;
+- **Cayman theme:** НЕ подключает `head_custom.html` (вопреки моему предположению). Для кастомизации `<head>` нужен полный custom default layout или inline `<script>` в .md;
+- **JuxtaposeJS:** требует точного равенства размеров изображений в пикселях, иначе разделитель не отрисовывается. CSS `max-width` не помогает;
+- **GitHub TLS handshake:** капризен из РФ для `gh release create`, через web-форму надёжнее. `git push` обычно работает.
+
+### Финальные точки входа в портфолио (8 каналов)
+
+| Канал | URL |
+|:---|:---|
+| 💻 GitHub-репо | https://github.com/EValentyuk/AgroNDVI |
+| 📄 Сайт документации | https://evalentyuk.github.io/AgroNDVI/ |
+| 🚀 Live приложение | https://agrondvi.streamlit.app/ |
+| 🗺️ Статичная folium-карта | https://evalentyuk.github.io/AgroNDVI/map.html |
+| 🔀 SCL vs NDVI slider | https://evalentyuk.github.io/AgroNDVI/comparison |
+| 🎞️ Анимация NDVI | hero README + docs/index |
+| 📊 PDF/PPTX презентация | через сайт |
+| 📚 CITATION.cff | sidebar GitHub |
+
+### Что осталось из бэклога (требуют действий пользователя)
+- **GitHub Release v0.1.0** -- через web https://github.com/EValentyuk/AgroNDVI/releases/new?tag=v0.1.0 с приложенным `models/lgb_yield.pkl`;
+- **Loom-видео 2 минуты** -- голосовой обзор Streamlit-приложения. Самое мощное оставшееся, делается вне Claude Code;
+- **Посты в TenChat / LinkedIn** -- черновики в `internal/publish-*.md`, через 1-2 дня после финальной публикации;
+- **English README** -- большой объём перевода, отложено.
+
+Дополнительные идеи (не критичные, по настроению): Sankey-диаграмма, Lighthouse-оптимизация, deck.gl 3D, live NDVI API.
+
+### Файлы (post-launch)
+- `docs/_config.yml`, `docs/_layouts/default.html`, `docs/index.md` (создан), `docs/map.html` (скопирован);
+- `docs/comparison.md`, `docs/images/ndvi_slider.png`, `scl_slider.png`, `ndvi_animation.gif`;
+- `docs/architecture.md` (Mermaid-инжект в конце);
+- `.github/workflows/smoke-test.yml`;
+- `CITATION.cff`, `runtime.txt`;
+- `internal/wow-backlog.md`, `internal/deploy-next-steps.md`;
+- `internal/publish-*.md` (перенесены из `docs/`);
+- `src/plot_animated_fields.py`;
+- 5 артефактов в `data/processed/` и `models/` (закоммичены через `-f` для Streamlit Cloud);
+- `README.md` -- 10 badges + hero live demo + GIF + ссылки на live URL.
+
+### Метрики
+- **11 коммитов за этап 1-6** post-launch (~12 часов работы);
+- **GIF NDVI 808 КБ**, 44 кадра, 11 секунд;
+- **Streamlit Cloud first build** ~5-7 минут;
+- **GitHub Actions smoke-test:** ~3-4 минуты на прогон, зелёный.
