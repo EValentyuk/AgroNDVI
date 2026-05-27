@@ -53,3 +53,4 @@ runs/
 ~$*.pptx
 ~$*.docx
 ~$*.xlsx
+data/processed/anim_log.txt

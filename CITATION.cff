@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "Если используешь этот проект в исследовании, цитируй так:"
+title: "AgroNDVI: спутниковый мониторинг рисовых полей Темрюкского района и прогноз урожайности"
+abstract: >
+  Pet-проект ML/DS-портфолио. End-to-end pipeline от поиска Sentinel-2
+  через AWS Element 84 STAC, расчёта NDVI и feature engineering до
+  LightGBM-регрессии с Leave-One-Out CV и anomaly detection в три
+  независимых метода. Включает Streamlit-приложение с интерактивной
+  картой. Демонстрирует bias-variance trade-off на N=20: простая
+  LinearRegression побеждает LightGBM (MAPE 2.95% vs 4.39%).
+type: software
+authors:
+  - family-names: Valentyuk
+    given-names: Evgeny
+    email: e.valentyuk@yandex.ru
+    affiliation: "Independent researcher"
+repository-code: "https://github.com/EValentyuk/AgroNDVI"
+url: "https://evalentyuk.github.io/AgroNDVI/"
+version: "0.1.0"
+date-released: "2026-05-26"
+license: MIT
+keywords:
+  - remote-sensing
+  - sentinel-2
+  - ndvi
+  - lightgbm
+  - precision-agriculture
+  - rice
+  - kuban
+  - anomaly-detection
+  - time-series
+  - ml-portfolio

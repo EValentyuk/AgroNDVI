@@ -2,6 +2,7 @@
 
 [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://agrondvi.streamlit.app/)
 [![Docs site](https://img.shields.io/badge/docs-evalentyuk.github.io%2FAgroNDVI-222?logo=github)](https://evalentyuk.github.io/AgroNDVI/)
+[![Smoke Test](https://github.com/EValentyuk/AgroNDVI/actions/workflows/smoke-test.yml/badge.svg)](https://github.com/EValentyuk/AgroNDVI/actions/workflows/smoke-test.yml)
 
 [![Python](https://img.shields.io/badge/Python-3.13-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![LightGBM](https://img.shields.io/badge/LightGBM-4.6-7BB661)](https://lightgbm.readthedocs.io/)
@@ -15,6 +16,10 @@
 
 > 🚀 **[Live demo: agrondvi.streamlit.app](https://agrondvi.streamlit.app/)** -- интерактивный UI на Streamlit Cloud, 24/7, без установки.
 > 📄 **[Документация: evalentyuk.github.io/AgroNDVI](https://evalentyuk.github.io/AgroNDVI/)** -- сайт с навигацией, картой и C4-диаграммами.
+
+![NDVI 20 полей за сезон 2023-2024](docs/images/ndvi_animation.gif)
+
+Сезонная динамика NDVI 20 рисовых чеков Темрюкского района за полный год: октябрь 2023 → сентябрь 2024, 44 кадра, 11 секунд. Видна классическая рисовая кривая: затопление чеков → всходы → пик в августе → жатва.
 
 Принимает координаты полей в Краснодарском крае, скачивает Sentinel-2 за сезон, считает NDVI, объединяет с погодой и историческими данными урожайности, выдаёт прогноз ц/га и подсвечивает аномальные поля. Streamlit-приложение с интерактивной картой.
 
