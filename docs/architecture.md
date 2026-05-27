@@ -214,3 +214,32 @@ graph LR
 ```
 
 Полный список -- в [requirements.txt](../requirements.txt).
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.0/dist/mermaid.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('pre > code.language-mermaid').forEach(function (codeEl) {
+      var pre = codeEl.parentElement;
+      var wrapper = document.createElement('pre');
+      wrapper.className = 'mermaid';
+      wrapper.textContent = codeEl.textContent;
+      pre.replaceWith(wrapper);
+    });
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'default',
+      securityLevel: 'loose',
+      flowchart: { useMaxWidth: true, htmlLabels: true },
+      sequence: { useMaxWidth: true }
+    });
+  });
+</script>
+<style>
+  pre.mermaid {
+    background: transparent !important;
+    text-align: center;
+    overflow-x: auto;
+    padding: 0;
+  }
+  pre.mermaid svg { max-width: 100%; height: auto; }
+</style>
