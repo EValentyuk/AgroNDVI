@@ -764,3 +764,23 @@ cd c:\Projects\AgroNDVI
 - **GIF NDVI 808 КБ**, 44 кадра, 11 секунд;
 - **Streamlit Cloud first build** ~5-7 минут;
 - **GitHub Actions smoke-test:** ~3-4 минуты на прогон, зелёный.
+
+## 2026-05-27 14:04
+
+### Post-launch hotfix: убран украинский флаг из leaflet attribution
+
+Leaflet 1.9+ по умолчанию добавляет эмодзи 🇺🇦 в attribution control рядом с ссылкой `https://leafletjs.com`. Для российского портфолио в банковский агро-сегмент это нежелательно. Фикс через CSS-инъекцию.
+
+### Что сделано
+- `docs/map.html` -- CSS в существующий `<style>`-блок, спрятаны:
+  - `a[href*="leafletjs.com"]` (вся ссылка с эмодзи, leaflet 1.9.0-1.9.3);
+  - `.leaflet-attribution-flag` (SVG-флаг в leaflet 1.9.4+);
+  - `.leaflet-control-attribution svg` (общий fallback);
+- `src/zonal_stats.py`, `src/plot_anomaly.py`, `src/streamlit_app.py` -- везде во `folium.Map(...)` добавлен `m.get_root().header.add_child(folium.Element('<style>...</style>'))` с теми же тремя селекторами. При следующей регенерации `data/preview/fields_v1_map.html` и `anomaly_map.html` будут без флага. Live Streamlit обновится автоматически через ~3 минуты после push (Streamlit Cloud rebuild).
+
+### Что осталось видимым в attribution (правильно)
+- `OpenStreetMap` -- обязательно по ODbL;
+- `Esri World Imagery` -- обязательно по Esri-лицензии тайлов.
+
+### Коммит
+- `878cc66` -- fix(map): спрятать ссылку leafletjs.com (с украинским флагом) через CSS.
