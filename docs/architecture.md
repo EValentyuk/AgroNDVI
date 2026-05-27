@@ -213,7 +213,7 @@ graph LR
     classDef lang fill:#fff8e1,stroke:#fb8c00,stroke-width:2px
 ```
 
-Полный список -- в [requirements.txt](../requirements.txt).
+Полный список -- в [requirements.txt](https://github.com/EValentyuk/AgroNDVI/blob/main/requirements.txt).
 
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.0/dist/mermaid.min.js"></script>
 <script>
