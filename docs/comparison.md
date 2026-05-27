@@ -15,13 +15,22 @@ title: AgroNDVI · сравнение SCL vs NDVI
 <link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
 <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
 
-<div class="juxtapose" data-startingposition="50%">
-  <img src="images/02_scl_classification.png" data-label="SCL Scene Classification"/>
-  <img src="images/01_ndvi_full_tile.png" data-label="NDVI (после SCL-маски)"/>
+<div class="juxtapose" data-startingposition="50%" style="max-width: 1000px; margin: 30px auto;">
+  <img src="images/scl_slider.png" data-label="SCL Scene Classification"/>
+  <img src="images/ndvi_slider.png" data-label="NDVI (после SCL-маски)"/>
 </div>
 
+<script>
+  window.addEventListener('load', function () {
+    if (typeof juxtapose !== 'undefined' && typeof juxtapose.scanPage === 'function') {
+      juxtapose.scanPage();
+    }
+  });
+</script>
+
 <style>
-.juxtapose { max-width: 100%; margin: 30px auto; }
+.juxtapose { max-width: 1000px; margin: 30px auto; }
+.juxtapose img { display: block; max-width: 100%; height: auto; }
 </style>
 
 ## Что видно
