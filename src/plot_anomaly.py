@@ -118,6 +118,13 @@ def make_anomaly_map(anomaly_csv: Path, k: int = TOP_K) -> Path:
 
     centroid = merged.geometry.unary_union.centroid
     m = folium.Map(location=[centroid.y, centroid.x], zoom_start=11, tiles="OpenStreetMap")
+    m.get_root().header.add_child(folium.Element(
+        '<style>'
+        '.leaflet-attribution-flag,'
+        '.leaflet-control-attribution svg { display: none !important; }'
+        '.leaflet-control-attribution a[href*="leafletjs.com"] { display: none !important; }'
+        '</style>'
+    ))
     folium.TileLayer(
         tiles="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
         attr="Esri World Imagery", name="Спутник Esri", overlay=False, control=True,

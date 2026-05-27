@@ -183,6 +183,13 @@ def main() -> None:
         centroid = df.geometry.union_all().centroid
 
         m = folium.Map(location=[centroid.y, centroid.x], zoom_start=11, tiles=None, control_scale=True)
+        m.get_root().header.add_child(folium.Element(
+            '<style>'
+            '.leaflet-attribution-flag,'
+            '.leaflet-control-attribution svg { display: none !important; }'
+            '.leaflet-control-attribution a[href*="leafletjs.com"] { display: none !important; }'
+            '</style>'
+        ))
         folium.TileLayer("OpenStreetMap", name="OSM").add_to(m)
         folium.TileLayer(
             tiles="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",

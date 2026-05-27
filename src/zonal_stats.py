@@ -125,6 +125,13 @@ def make_folium_map(fields_gdf: gpd.GeoDataFrame, stats: pd.DataFrame) -> Path:
     gdf_w = fields_gdf.to_crs("EPSG:4326").merge(stats, on="field_id", suffixes=("", "_s"))
     centroid = gdf_w.geometry.unary_union.centroid
     m = folium.Map(location=[centroid.y, centroid.x], zoom_start=11, tiles="OpenStreetMap")
+    m.get_root().header.add_child(folium.Element(
+        '<style>'
+        '.leaflet-attribution-flag,'
+        '.leaflet-control-attribution svg { display: none !important; }'
+        '.leaflet-control-attribution a[href*="leafletjs.com"] { display: none !important; }'
+        '</style>'
+    ))
     folium.TileLayer(
         tiles="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
         attr="Esri World Imagery", name="Спутник Esri", overlay=False, control=True,
